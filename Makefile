@@ -1,9 +1,9 @@
 
 # vim: ft=make noexpandtab
 
-MDEMOSNC_SRC = src/main.c
+MDEMONC_SRC = src/main.c
 
-mdemosnc: $(addprefix obj/$(shell uname -s)/,$(subst .c,.o,$(MDEMOSNC_SRC)))
+mdemonc: $(addprefix obj/$(shell uname -s)/,$(subst .c,.o,$(MDEMONC_SRC)))
 	gcc -o $@ $^ $(shell pkg-config ncurses --libs) -lm
 
 obj/$(shell uname -s)/%.o: %.c
@@ -11,5 +11,5 @@ obj/$(shell uname -s)/%.o: %.c
 	gcc -o $@ -c $< $(shell pkg-config ncurses --cflags)
 
 clean:
-	rm -rf obj mdemosnc
+	rm -rf obj mdemonc
 
